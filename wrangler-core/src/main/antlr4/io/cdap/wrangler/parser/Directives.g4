@@ -140,7 +140,8 @@ numberRange
  ;
 
 value
- : String | Number | Column | Bool
+ : String | Number | Column | Bool | BYTE_SIZE | TIME_DURATION
+
  ;
 
 ecommand
@@ -158,6 +159,15 @@ column
 text
  : String
  ;
+
+
+ byteSizeArg
+  : BYTE_SIZE
+  ;
+
+timeDurationArg
+  : TIME_DURATION
+  ;
 
 number
  : Number
@@ -308,6 +318,20 @@ fragment Int
  | '0'
  ;
 
+
+
+BYTE_SIZE
+ : NUMBER ( 'B' | 'KB' | 'MB' | 'GB' | 'TB' )
+ ;
+
+TIME_DURATION
+ : NUMBER ( 's' | 'm' | 'h' | 'd' )
+ ;
+
+fragment NUMBER
+ : [0-9]+ ('.' [0-9]+)?
+ ;
 fragment Digit
  : [0-9]
  ;
+
